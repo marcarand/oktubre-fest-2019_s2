@@ -1,0 +1,24 @@
+import personas.*
+import marcas.*
+import jarras.*
+import paises.*
+import carpas.*
+
+
+test "Ingresar a la carpa" {
+
+	const unBelga = new Belga(peso=85, musicaTradicional=true, nivelAguante=5, marcasPreferidas=[corona], nacionalidad=belgica)
+	const unCheco = new Checo(peso=100, musicaTradicional=false, nivelAguante=8, marcasPreferidas=[hofbrau, guiness], nacionalidad=checoslovakia)
+	const unAleman = new Aleman(peso=65, musicaTradicional=true, nivelAguante=10, marcasPreferidas=[], nacionalidad=alemania)
+	
+	assert.that(not unBelga.esPatriota())
+	assert.that(not unAleman.esEbrioEmpedernido())
+	
+	// carpa
+	const carpaMexicana = new Carpa(genteAdmitida=20, marcaVendida=corona, bandaMusical=true)
+	carpaMexicana.hacerEntrar(unBelga)
+	carpaMexicana.servirJarra(unBelga,0.5)
+	carpaMexicana.servirJarra(unBelga,1)
+	
+	assert.that(not unBelga.esEbrioEmpedernido())
+}

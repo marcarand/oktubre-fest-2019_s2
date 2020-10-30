@@ -1,0 +1,22 @@
+import personas.*
+import marcas.*
+import jarras.*
+import paises.*
+
+test "contenido de alcohol" {
+
+	// PERSONAS
+	// ========
+	const carlos = new Persona(peso=85, musicaTradicional=true, nivelAguante=5, marcasPreferidas=[corona,guiness], nacionalidad=argentina)
+	
+	const jarra1 = new Jarra(capacidad=1, marca=corona)
+	const jarra2 = new Jarra(capacidad=0.5, marca=corona)
+	const jarra3 = new Jarra(capacidad=0.5, marca=guiness)	
+
+	carlos.tomarJarra(jarra1)
+	carlos.tomarJarra(jarra2)
+	carlos.tomarJarra(jarra3)
+	
+	assert.that(carlos.estaEbria())
+	assert.that(not carlos.leGusta(hofbrau))
+}
